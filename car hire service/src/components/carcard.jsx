@@ -9,16 +9,16 @@ function CarCard({ car }) {
       overflow-hidden
     ">
 
-    
       <img
         src={car.image}
         alt={car.name}
         className="
           w-full
           h-48
-          object-cover"/>
+          object-cover
+        "
+      />
 
-      
       <div className="p-5">
 
         <h2 className="text-xl font-bold mb-2">
@@ -30,7 +30,7 @@ function CarCard({ car }) {
         </p>
 
         <p className="text-orange-500 font-bold text-lg mb-4">
-          KSh {car.price} / day
+          KSh {car.price.toLocaleString()} / day
         </p>
 
         <Link
