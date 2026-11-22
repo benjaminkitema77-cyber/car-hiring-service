@@ -3,7 +3,8 @@ import e53 from "../assets/cars/e53.jpg";
 import escalade from "../assets/cars/Escalade.jpg";
 import gle from "../assets/cars/GLE.jpg";
 import ram from "../assets/cars/RAM.jpg";
-import shelby from "../assets/cars/shelby.jpg";
+import shelby from "../assets/cars/shelby.jpg"
+
 
 const cars = [
   {

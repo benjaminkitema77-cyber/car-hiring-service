@@ -1,33 +1,55 @@
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect
+} from "react";
+
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut
+} from "firebase/auth";
+
+import { auth } from "../services/firebase";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  function login(email, ) {
-    setUser({
-      email: email,
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
     });
+
+    return () => unsubscribe();
+  }, []);
+
+  async function login(email, password) {
+    return await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
   }
 
-  function register(name, email, ) {
-    setUser({
-      name: name,
-      email: email,
-    });
+  async function logout() {
+    return await signOut(auth);
   }
 
-  function logout() {
-    setUser(null);
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        loading,
         login,
-        register,
         logout,
       }}
     >

@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-import CarCard from "../components/cardcard";
+import CarCard from "../components/carcard";
 
 import charger from "../assets/cars/charger.jpg";
 import e53 from "../assets/cars/e53.jpg";
